@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    @apply max-w-[1920px] 4xl:mx-auto;
+  }
+
+  body {
+    @apply font-poppins dark:bg-gray-900 dark:text-white 4xl:border-x-1 dark:4xl:border-slate-800;
+  }
+
+  *:focus-visible {
+    @apply lg:outline-none lg:outline-1 lg:outline-offset-2 lg:outline-blue-400;
+  }
+
+  *:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+@layer components {
+  .auth-input {
+    @apply rounded-lg border-1 px-2 py-1 dark:border-slate-600 dark:bg-slate-800;
+  }
+
+  .error--info {
+    @apply max-h-0 overflow-hidden text-xs transition-all data-[visible=true]:mt-1 data-[visible=true]:max-h-4 dark:text-red-400;
+  }
+
+  .blue-button {
+    @apply mx-auto rounded-lg bg-blue-600 px-6 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-700 focus-visible:bg-blue-700 disabled:opacity-50 disabled:hover:bg-blue-600;
+  }
+}
+@layer utilities {
+  .text-hover {
+    @apply transition-colors dark:text-slate-400 dark:focus-visible:text-slate-200 dark:lg:hover:text-slate-200;
+  }
+  .border-hover {
+    @apply border-1 transition-colors dark:border-slate-600 dark:focus-visible:border-slate-500 dark:lg:hover:border-slate-500;
+  }
+}
