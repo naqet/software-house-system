@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FormEvent, useState } from "react";
+import { type FormEvent, useState } from "react";
 import { FiEye, FiEyeOff, FiGithub, FiLoader } from "react-icons/fi";
 import { AiOutlineGoogle } from "react-icons/ai";
 

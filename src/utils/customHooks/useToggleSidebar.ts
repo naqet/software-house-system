@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-const useToggleSidebar = (closeOnly: boolean = false) => {
+const useToggleSidebar = (closeOnly: false) => {
   const toggleSidebar = useCallback(() => {
     if (typeof document === "undefined") return;
 
@@ -19,7 +19,7 @@ const useToggleSidebar = (closeOnly: boolean = false) => {
 
     document.documentElement.style.overflow =
       sidebar.dataset.expanded === "true" ? "hidden" : "scroll";
-  }, []);
+  }, [closeOnly]);
 
   return toggleSidebar;
 };

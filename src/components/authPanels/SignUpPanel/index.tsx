@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { type FormEvent, useState } from "react";
 import { FiEye, FiEyeOff, FiLoader } from "react-icons/fi";
 
 export default function SignUpPanel() {
