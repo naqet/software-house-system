@@ -1,4 +1,4 @@
-import { Project } from "@prisma/client";
+import type { Project } from "@prisma/client";
 import Link from "next/link";
 import React from "react";
 import { BiDotsHorizontal } from "react-icons/bi";
