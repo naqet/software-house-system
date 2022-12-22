@@ -1,12 +1,12 @@
 import ProgressBar from "../../../../../shared/ProgressBar";
 
 export default function SmallProjectInfo() {
-	return (
-		<div className="my-2">
-			<h2 className="flex gap-4 items-center text-xl lg:text-base">
-				<span className="w-10 h-10 bg-red-400 rounded-lg" /> Project Name
-			</h2>
-			<ProgressBar value={33} />
-		</div>
-	);
+  return (
+    <div className="my-2">
+      <h2 className="flex items-center gap-4 text-xl lg:text-base">
+        <span className="h-10 w-10 rounded-lg bg-red-400" /> Project Name
+      </h2>
+      <ProgressBar value={33} />
+    </div>
+  );
 }
