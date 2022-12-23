@@ -2,6 +2,7 @@ import { trpc } from "../../../utils/trpc";
 import ProjectPreview from "./ProjectPreview";
 import Loader from "../../shared/Loader";
 import AddProjectButton from "../../shared/AddProjectButton";
+import { FiPlus } from "react-icons/fi";
 
 export default function Dashboard() {
   const projects = trpc.project.all.useQuery();
@@ -41,6 +42,11 @@ export default function Dashboard() {
               <ProjectPreview project={project} />
             </li>
           ))}
+          <li>
+            <AddProjectButton className="border-hover text-hover flex h-full w-full items-center justify-center gap-1 rounded-lg border-dashed">
+              <FiPlus className="text-2xl" /> Add project
+            </AddProjectButton>
+          </li>
         </ul>
       </div>
     </main>
