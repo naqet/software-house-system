@@ -9,6 +9,7 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
+        <div id="slider-portal" className="absolute top-0"></div>
       </body>
     </Html>
   );

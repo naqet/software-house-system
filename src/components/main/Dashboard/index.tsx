@@ -1,6 +1,7 @@
 import { trpc } from "../../../utils/trpc";
 import ProjectPreview from "./ProjectPreview";
 import Loader from "../../shared/Loader";
+import AddProjectButton from "../../shared/AddProjectButton";
 
 export default function Dashboard() {
   const projects = trpc.project.all.useQuery();
@@ -40,7 +41,6 @@ export default function Dashboard() {
               <ProjectPreview project={project} />
             </li>
           ))}
-          {/* TODO: handle adding new project */}
         </ul>
       </div>
     </main>

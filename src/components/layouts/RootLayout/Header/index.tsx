@@ -5,7 +5,7 @@ import NotificationsBell from "./NotificationsBell";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 flex items-center justify-between border-b-1 p-4 dark:border-slate-800 dark:bg-slate-900">
+    <header className="sticky top-0 z-10 flex items-center justify-between border-b-1 p-4 dark:border-slate-800 dark:bg-slate-900">
       <MenuButton />
 
       {/* TODO: Add Logo*/}
