@@ -98,7 +98,7 @@ export default function LogInPanel() {
             <input
               name="email"
               id="email"
-              className="auth-input"
+              className="form-input"
               required
               type="email"
               aria-errormessage="emailError"
@@ -115,7 +115,7 @@ export default function LogInPanel() {
               <input
                 name="password"
                 id="password"
-                className="auth-input w-full"
+                className="form-input w-full"
                 required
                 type={passType}
               />
@@ -166,7 +166,7 @@ export default function LogInPanel() {
             </Link>
           </li>
         </ul>
-        <span data-visible={!!error} className="error--info ml-3">
+        <span data-visible={!!error} className="error-info ml-3">
           {error}
         </span>
       </section>

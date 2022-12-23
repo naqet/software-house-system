@@ -21,11 +21,11 @@
 }
 
 @layer components {
-  .auth-input {
+  .form-input {
     @apply rounded-lg border-1 px-2 py-1 dark:border-slate-600 dark:bg-slate-800;
   }
 
-  .error--info {
+  .error-info {
     @apply max-h-0 overflow-hidden text-xs transition-all data-[visible=true]:mt-1 data-[visible=true]:max-h-4 dark:text-red-400;
   }
 

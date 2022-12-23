@@ -2,10 +2,7 @@ import { useRouter } from "next/router";
 import { type FormEvent, useState, useRef, useReducer } from "react";
 import { FiEye, FiEyeOff, FiLoader } from "react-icons/fi";
 import { ZodError, type ZodIssue } from "zod";
-
-type Errors = {
-  [key: string]: string;
-};
+import type FormErrors from "../../../types/FormErrors";
 
 type ErrorsAction =
   | {
@@ -15,25 +12,20 @@ type ErrorsAction =
   | {
       type: "SET_INPUT_ERRORS";
       payload: ZodIssue[];
-    }
-  | {
-      type: "CLEAR_ERRORS";
     };
 
-const reducer = (state: Errors, action: ErrorsAction) => {
+const reducer = (state: FormErrors, action: ErrorsAction) => {
   switch (action.type) {
     case "SET_GENERAL_ERROR":
       return { generalError: action.payload };
     case "SET_INPUT_ERRORS":
       return action.payload.reduce(
-        (allErrors: Errors, currentError) => ({
+        (allErrors: FormErrors, currentError) => ({
           ...allErrors,
           ...{ [currentError.path[0] ?? "generalError"]: currentError.message },
         }),
         {}
       );
-    case "CLEAR_ERRORS":
-      return {};
     default:
       return state;
   }
@@ -103,14 +95,14 @@ export default function SignUpPanel() {
             <input
               name="name"
               id="name"
-              className="auth-input"
+              className="form-input"
               required
               aria-errormessage="nameError"
             />
             <span
               id="nameError"
               data-visible={!!errors.name}
-              className="error--info"
+              className="error-info"
             >
               {errors.name}
             </span>
@@ -122,7 +114,7 @@ export default function SignUpPanel() {
             <input
               name="email"
               id="email"
-              className="auth-input"
+              className="form-input"
               type="email"
               required
               aria-errormessage="nameError"
@@ -130,7 +122,7 @@ export default function SignUpPanel() {
             <span
               id="emailError"
               data-visible={!!errors.email}
-              className="error--info"
+              className="error-info"
             >
               {errors.email}
             </span>
@@ -146,7 +138,7 @@ export default function SignUpPanel() {
               <input
                 name="password"
                 id="password"
-                className="auth-input	w-full"
+                className="form-input	w-full"
                 required
                 minLength={8}
                 type={passType}
@@ -164,7 +156,7 @@ export default function SignUpPanel() {
             <span
               id="passwordError"
               data-visible={!!errors.password}
-              className="error--info"
+              className="error-info"
             >
               {errors.password}
             </span>
@@ -179,7 +171,7 @@ export default function SignUpPanel() {
             <input
               name="confirmPassword"
               id="confirmPassword"
-              className="auth-input w-full"
+              className="form-input w-full"
               required
               type={passType}
               aria-errormessage="confirmPasswordError"
@@ -187,7 +179,7 @@ export default function SignUpPanel() {
             <span
               id="confirmPasswordError"
               data-visible={!!errors.confirmPassword}
-              className="error--info"
+              className="error-info"
             >
               {errors.confirmPassword}
             </span>
@@ -208,7 +200,7 @@ export default function SignUpPanel() {
         <span
           id="generalError"
           data-visible={!!errors.generalError}
-          className="error--info"
+          className="error-info"
         >
           {errors.generalError}
         </span>
