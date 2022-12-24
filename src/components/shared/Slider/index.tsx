@@ -1,4 +1,10 @@
-import { type Dispatch, type SetStateAction, useMemo, useEffect } from "react";
+import {
+  type Dispatch,
+  type SetStateAction,
+  useMemo,
+  useEffect,
+  useState,
+} from "react";
 import { createPortal } from "react-dom";
 import { FiX } from "react-icons/fi";
 
@@ -19,6 +25,8 @@ const Slider: React.FC<Props> = ({
   // rerendered every time anyway
   const isLeft = direction === "left";
 
+  const [portal, setPortal] = useState<Element | null>(null);
+
   useEffect(() => {
     if (isOpen) {
       document.documentElement.style.overflow = "hidden";
@@ -28,6 +36,10 @@ const Slider: React.FC<Props> = ({
   }, [isOpen]);
 
   useEffect(() => {
+    if (typeof document === "undefined") return;
+
+    setPortal(document.querySelector("#slider-portal"));
+
     const handleClick = (event: KeyboardEvent) => {
       if (event.key === "Escape") setIsOpen(false);
     };
@@ -36,8 +48,6 @@ const Slider: React.FC<Props> = ({
 
     return () => document.removeEventListener("keydown", handleClick);
   }, []);
-
-  const portal = useMemo(() => document.querySelector("#slider-portal"), []);
 
   if (!portal) return null;
 
