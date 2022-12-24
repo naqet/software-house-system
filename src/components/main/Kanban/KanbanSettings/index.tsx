@@ -38,14 +38,14 @@ export default function KanbanSettings() {
 		}
 	};
 	return (
-		<ul className="flex h-fit items-center">
+		<ul className="flex h-fit items-center text-2xl lg:text-xl">
 			<li className="grid w-fit">
 				<button
 					type="button"
 					title="Columns project view"
 					onClick={handleViewChange("columns")}
 					data-active={!listView}
-					className="grid place-items-center rounded-l-lg p-1 text-xl transition-colors dark:bg-gray-700 dark:bg-opacity-30 dark:hover:bg-opacity-40 dark:focus-visible:bg-opacity-40 dark:data-[active=true]:bg-gray-700"
+					className="grid place-items-center rounded-l-lg p-1 transition-colors dark:bg-gray-700 dark:bg-opacity-30 dark:hover:bg-opacity-40 dark:focus-visible:bg-opacity-40 dark:data-[active=true]:bg-gray-700"
 				>
 					<FiBarChart className="rotate-180" />
 				</button>
@@ -56,7 +56,7 @@ export default function KanbanSettings() {
 					title="List project view"
 					onClick={handleViewChange("list")}
 					data-active={listView}
-					className="grid place-items-center rounded-r-lg p-1 text-xl transition-colors dark:bg-gray-700 dark:bg-opacity-30 dark:hover:bg-opacity-40 dark:focus-visible:bg-opacity-40 dark:data-[active=true]:bg-gray-700"
+					className="grid place-items-center rounded-r-lg p-1 transition-colors dark:bg-gray-700 dark:bg-opacity-30 dark:hover:bg-opacity-40 dark:focus-visible:bg-opacity-40 dark:data-[active=true]:bg-gray-700"
 				>
 					<FiList />
 				</button>
