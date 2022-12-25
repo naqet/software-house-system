@@ -4,23 +4,21 @@ import { router, protectedProcedure } from "../trpc";
 export const kanbanRouter = router({
   getTasks: protectedProcedure.input(z.string()).query(({ input, ctx }) => {
     return ctx.prisma.$transaction([
-      ctx.prisma.story.findMany({
-        where: { projectId: input },
-        select: {
-          epics: { select: { tasks: true } },
-        },
-      }),
+      ctx.prisma.story
+        .findFirst({
+          where: { projectId: input },
+        })
+        .epics({ select: { tasks: true } }),
       ctx.prisma.taskStatus.findMany(),
     ]);
   }),
   getEpics: protectedProcedure.input(z.string()).query(({ input, ctx }) => {
     return ctx.prisma.$transaction([
-      ctx.prisma.story.findMany({
-        where: { projectId: input },
-        select: {
-          epics: { select: { tasks: true } },
-        },
-      }),
+      ctx.prisma.story
+        .findFirst({
+          where: { projectId: input },
+        })
+        .epics(),
       ctx.prisma.epicStatus.findMany(),
     ]);
   }),
@@ -28,9 +26,6 @@ export const kanbanRouter = router({
     return ctx.prisma.$transaction([
       ctx.prisma.story.findMany({
         where: { projectId: input },
-        select: {
-          epics: { select: { tasks: true } },
-        },
       }),
       ctx.prisma.storyStatus.findMany(),
     ]);

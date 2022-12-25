@@ -9,12 +9,13 @@ export default function EpicsBoard() {
 
 	if (!projectId || Array.isArray(projectId)) return <></>;
 
-	const { isLoading, isError, data } =
-		trpc.story.getAllFromProject.useQuery(projectId);
+	const { isLoading, isError, data } = trpc.kanban.getEpics.useQuery(projectId);
 
 	if (isLoading) return <Loader />;
 
 	if (isError) return <Loader />;
+
+	const [epics, statuses] = data;
 
 	return (
 		<ul
@@ -22,13 +23,11 @@ export default function EpicsBoard() {
 			// data-list-view is added/removed programmatically in KanbanViewSettings
 			className="group flex w-full snap-x snap-mandatory flex-nowrap gap-4 overflow-y-scroll dark:data-[list-view=true]:flex-col"
 		>
-			{[
-				{ name: "Pending", data: [] },
-				{ name: "Doing", data: [] },
-				{ name: "Doing", data: [] },
-				{ name: "Doing", data: [] },
-			].map((column) => (
-				<KanbanColumn name={column.name} data={column.data} />
+			{statuses.map((status) => (
+				<KanbanColumn
+					name={status.name}
+					data={epics?.filter((epic) => epic.epicStatusId === status.id)}
+				/>
 			))}
 		</ul>
 	);

@@ -10,11 +10,13 @@ export default function StoriesBoard() {
 	if (!projectId || Array.isArray(projectId)) return <></>;
 
 	const { isLoading, isError, data } =
-		trpc.story.getAllFromProject.useQuery(projectId);
+		trpc.kanban.getStories.useQuery(projectId);
 
 	if (isLoading) return <Loader />;
 
 	if (isError) return <Loader />;
+
+	const [stories, statuses] = data;
 
 	return (
 		<ul
@@ -22,13 +24,12 @@ export default function StoriesBoard() {
 			// data-list-view is added/removed programmatically in KanbanViewSettings
 			className="group flex w-full snap-x snap-mandatory flex-nowrap gap-4 overflow-y-scroll dark:data-[list-view=true]:flex-col"
 		>
-			{[
-				{ name: "Pending", data: [] },
-				{ name: "Doing", data: [] },
-				{ name: "Doing", data: [] },
-				{ name: "Doing", data: [] },
-			].map((column) => (
-				<KanbanColumn name={column.name} data={column.data} />
+			{statuses.map((status) => (
+				<KanbanColumn
+					key={status.id}
+					name={status.name}
+					data={stories.filter((story) => story.storyStatusId === status.id)}
+				/>
 			))}
 		</ul>
 	);

@@ -3,7 +3,7 @@ import { BiDotsHorizontal } from "react-icons/bi";
 
 type Props = {
 	name: string;
-	data: Task[] | Epic[] | Story[];
+	data?: Task[] | Epic[] | Story[];
 };
 
 const KanbanColumn: React.FC<Props> = ({ name, data }) => {
@@ -15,7 +15,7 @@ const KanbanColumn: React.FC<Props> = ({ name, data }) => {
 					<BiDotsHorizontal className="text-hover text-xl" />
 				</button>
 			</div>
-			{!data.length ? (
+			{!data || !data.length ? (
 				<span className="text-center opacity-50">No data</span>
 			) : (
 				<ul>
