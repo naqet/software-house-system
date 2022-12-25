@@ -1,5 +1,7 @@
 import type { Epic, Story, Task } from "@prisma/client";
 import { BiDotsHorizontal } from "react-icons/bi";
+import AttachmentsIcon from "../../AttachmentsIcon";
+import TimeTag from "../../TimeTag";
 
 type Props = {
 	data: Task | Epic | Story;
@@ -7,17 +9,19 @@ type Props = {
 
 const KanbanItem: React.FC<Props> = ({ data }) => {
 	return (
-		<li className="rounded-lg p-2 transition-colors dark:bg-gray-800 dark:bg-opacity-30 dark:hover:bg-opacity-40">
-			<div className="flex items-center justify-between">
-				<h3 className="w-full overflow-hidden text-ellipsis whitespace-nowrap">
-					{data.title}
-				</h3>
+		<li className="flex flex-col gap-2 rounded-lg p-2 transition-colors group-data-[list-view=true]:flex-row dark:bg-gray-800 dark:bg-opacity-30 dark:hover:bg-opacity-40">
+			<h3 className="w-full overflow-hidden text-ellipsis whitespace-nowrap">
+				{data.title}
+			</h3>
+			<div className="flex items-center gap-2">
+				<AttachmentsIcon count={data.attachments.length} />
+				<TimeTag deadline={data.deadline} />
 				<button
 					type="button"
-					title="Actions"
-					className="text-hover justify-self-end text-3xl"
+					title="See details"
+					className="border-hover text-hover ml-auto rounded-lg px-2 py-1 text-xs"
 				>
-					<BiDotsHorizontal />
+					Details
 				</button>
 			</div>
 		</li>
