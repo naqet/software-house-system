@@ -4,9 +4,9 @@ import { kanbanRouter } from "./kanban";
 import { projectRouter } from "./project";
 
 export const appRouter = router({
-	project: projectRouter,
-	auth: authRouter,
-	kanban: kanbanRouter,
+  project: projectRouter,
+  auth: authRouter,
+  kanban: kanbanRouter,
 });
 
 // export type definition of API

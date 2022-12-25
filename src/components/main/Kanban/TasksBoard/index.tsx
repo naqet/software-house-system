@@ -19,7 +19,7 @@ export default function TasksBoard() {
     return [
       ...new Set(([] as Task[]).concat(...data[0].map((epic) => epic.tasks))),
     ];
-  }, [data?.[0]?.length]);
+  }, [data]);
 
   if (isLoading) return <Loader />;
 
