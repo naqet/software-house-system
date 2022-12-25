@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FiBarChart, FiList } from "react-icons/fi";
+import ModeSwitch from "../ModeSwitch";
 
 export default function KanbanSettings() {
 	const [listView, setListView] = useState(false);
@@ -39,6 +40,9 @@ export default function KanbanSettings() {
 	};
 	return (
 		<ul className="flex h-fit items-center text-2xl lg:text-xl">
+			<li className="mr-4">
+				<ModeSwitch />
+			</li>
 			<li className="grid w-fit">
 				<button
 					type="button"

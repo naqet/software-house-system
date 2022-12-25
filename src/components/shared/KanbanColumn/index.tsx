@@ -21,7 +21,7 @@ const KanbanColumn: React.FC<Props> = ({ name, data }) => {
 					No data
 				</span>
 			) : (
-				<ul className="grid w-full items-start gap-2 overflow-scroll">
+				<ul className="grid w-full items-start gap-2 overflow-y-scroll">
 					{data.map((piece) => (
 						<KanbanItem key={piece.id} data={piece} />
 					))}
