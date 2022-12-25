@@ -1,5 +1,6 @@
 import type { Story, Epic, Task } from "@prisma/client";
 import { BiDotsHorizontal } from "react-icons/bi";
+import KanbanItem from "./KanbanItem";
 
 type Props = {
 	name: string;
@@ -20,7 +21,7 @@ const KanbanColumn: React.FC<Props> = ({ name, data }) => {
 			) : (
 				<ul>
 					{data.map((piece) => (
-						<li key={piece.id}>{piece.title}</li>
+						<KanbanItem key={piece.id} data={piece} />
 					))}
 				</ul>
 			)}
