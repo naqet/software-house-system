@@ -1,12 +1,12 @@
 import { router } from "../trpc";
 import { authRouter } from "./auth";
+import { kanbanRouter } from "./kanban";
 import { projectRouter } from "./project";
-import { storyRouter } from "./story";
 
 export const appRouter = router({
 	project: projectRouter,
 	auth: authRouter,
-	story: storyRouter,
+	kanban: kanbanRouter,
 });
 
 // export type definition of API
