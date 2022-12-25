@@ -1,8 +1,8 @@
-import { FormEvent, useReducer, useRef, useState } from "react";
+import { type FormEvent, useReducer, useRef } from "react";
 import { FiLoader } from "react-icons/fi";
-import { ZodError, ZodIssue } from "zod";
+import { ZodError, type ZodIssue } from "zod";
 import addProjectSchema from "../../../../schemas/AddProjectSchema";
-import FormErrors from "../../../../types/FormErrors";
+import type FormErrors from "../../../../types/FormErrors";
 import { trpc } from "../../../../utils/trpc";
 
 type ErrorsAction =

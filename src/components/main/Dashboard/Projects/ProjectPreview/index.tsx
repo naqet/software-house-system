@@ -23,7 +23,7 @@ const ProjectPreview: React.FC<Props> = ({ project }) => {
         <button
           type="button"
           title="Project action buttons"
-          className="text-hover justify-self-end text-3xl"
+          className="text-hover justify-self-end text-2xl"
           onClick={(e) => {
             // This prevents router to act, as this button is inside a Link
             e.preventDefault();
