@@ -4,9 +4,9 @@ import { projectRouter } from "./project";
 import { storyRouter } from "./story";
 
 export const appRouter = router({
-	project: projectRouter,
-	auth: authRouter,
-	story: storyRouter,
+  project: projectRouter,
+  auth: authRouter,
+  story: storyRouter,
 });
 
 // export type definition of API

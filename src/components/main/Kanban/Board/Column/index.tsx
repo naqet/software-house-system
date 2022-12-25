@@ -8,7 +8,7 @@ type Props = {
 
 const Column: React.FC<Props> = ({ name, data }) => {
 	return (
-		<li className="grid min-h-[calc(100vh-105px-3rem)] w-[calc(100vw-2rem)] flex-shrink-0 snap-start items-start gap-2 rounded-xl border-1 p-3 dark:border-slate-700 sm:h-[calc(100vh-105px-3rem)] sm:w-[300px]">
+		<li className="grid h-auto min-h-[calc(100vh-105px-3rem)] w-[calc(100vw-2rem)] flex-shrink-0 snap-start items-start gap-2 rounded-xl border-1 p-3 group-data-[list-view=true]:min-h-min group-data-[list-view=true]:w-full dark:border-slate-800 sm:h-[calc(100vh-105px-3rem)] sm:w-[300px] sm:group-data-[list-view=true]:h-fit">
 			<div className="flex items-center justify-between">
 				<h3 className="font-semibold dark:text-slate-400">{name}</h3>
 				<button type="button">
