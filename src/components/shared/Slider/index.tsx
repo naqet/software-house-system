@@ -1,10 +1,4 @@
-import {
-  type Dispatch,
-  type SetStateAction,
-  useMemo,
-  useEffect,
-  useState,
-} from "react";
+import { type Dispatch, type SetStateAction, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { FiX } from "react-icons/fi";
 
@@ -47,7 +41,7 @@ const Slider: React.FC<Props> = ({
     document.addEventListener("keydown", handleClick);
 
     return () => document.removeEventListener("keydown", handleClick);
-  }, []);
+  }, [setIsOpen]);
 
   if (!portal) return null;
 

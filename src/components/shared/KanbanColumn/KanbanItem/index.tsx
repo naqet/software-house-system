@@ -8,7 +8,7 @@ type Props = {
 
 const KanbanItem: React.FC<Props> = ({ data }) => {
 	return (
-		<li className="flex flex-col gap-2 rounded-lg p-2 transition-colors group-data-[list-view=true]:flex-row dark:bg-gray-800 dark:bg-opacity-30 dark:hover:bg-opacity-40">
+		<li className="grid gap-2 rounded-lg p-2 transition-colors group-data-[list-view=true]:grid-cols-[1fr_min-content]  dark:bg-gray-800 dark:bg-opacity-30 dark:hover:bg-opacity-40">
 			<h3 className="overflow-hidden text-ellipsis whitespace-nowrap">
 				{data.title}
 			</h3>
