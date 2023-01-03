@@ -1,10 +1,10 @@
-import type { Story, Epic, Task } from "@prisma/client";
+import type { Task } from "@prisma/client";
 import { BiDotsHorizontal } from "react-icons/bi";
 import KanbanItem from "./KanbanItem";
 
 type Props = {
   name: string;
-  data?: Task[] | Epic[] | Story[];
+  data: Task[];
 };
 
 const KanbanColumn: React.FC<Props> = ({ name, data }) => {
