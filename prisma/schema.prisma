@@ -27,10 +27,6 @@ model User {
   updatedAt       DateTime         @updatedAt
   role            Role             @default(GUEST)
   projectComments ProjectComment[]
-  storiesCreated  Story[]
-  storyComments   StoryComment[]
-  epicsCreated    Epic[]
-  epicComments    EpicComment[]
   tasksCreated    Task[]
   taskComments    TaskComment[]
 }
@@ -52,7 +48,7 @@ model Project {
   completionPercentage Int
   createdAt            DateTime         @default(now())
   updatedAt            DateTime         @updatedAt
-  stories              Story[]
+  tasks                Task[]
   projectComments      ProjectComment[]
 }
 
@@ -67,76 +63,6 @@ model ProjectComment {
   updatedAt DateTime @updatedAt
 }
 
-model Story {
-  id            String         @id @default(cuid())
-  title         String
-  description   String
-  attachments   String[]
-  storyStatusId Int
-  storyStatus   StoryStatus    @relation(fields: [storyStatusId], references: [id])
-  projectId     String
-  project       Project        @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  creatorId     String
-  creator       User           @relation(fields: [creatorId], references: [id], onDelete: Cascade)
-  deadline      DateTime
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @updatedAt
-  epics         Epic[]
-  storyComments StoryComment[]
-}
-
-model StoryStatus {
-  id      Int     @id @default(autoincrement())
-  name    String
-  stories Story[]
-}
-
-model StoryComment {
-  id        String   @id @default(cuid())
-  content   String
-  creatorId String
-  creator   User     @relation(fields: [creatorId], references: [id])
-  storyId   String
-  story     Story    @relation(fields: [storyId], references: [id], onDelete: Cascade)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model Epic {
-  id           String        @id @default(cuid())
-  title        String
-  description  String
-  attachments  String[]
-  creatorId    String
-  creator      User          @relation(fields: [creatorId], references: [id], onDelete: Cascade)
-  epicStatusId Int
-  epicStatus   EpicStatus    @relation(fields: [epicStatusId], references: [id])
-  storyId      String
-  story        Story         @relation(fields: [storyId], references: [id], onDelete: Cascade)
-  deadline     DateTime
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
-  epicComments EpicComment[]
-  tasks        Task[]
-}
-
-model EpicStatus {
-  id    Int    @id @default(autoincrement())
-  name  String
-  epics Epic[]
-}
-
-model EpicComment {
-  id        String   @id @default(cuid())
-  content   String
-  creatorId String
-  creator   User     @relation(fields: [creatorId], references: [id])
-  epicId    String
-  epic      Epic     @relation(fields: [epicId], references: [id], onDelete: Cascade)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
 model Task {
   id               String        @id @default(cuid())
   title            String
@@ -147,8 +73,8 @@ model Task {
   taskStatus       TaskStatus    @relation(fields: [taskStatusId], references: [id])
   creatorId        String
   creator          User          @relation(fields: [creatorId], references: [id])
-  epicId           String
-  epic             Epic          @relation(fields: [epicId], references: [id], onDelete: Cascade)
+  projectId        String
+  project          Project       @relation(fields: [projectId], references: [id], onDelete: Cascade)
   deadline         DateTime
   createdAt        DateTime      @default(now())
   updatedAt        DateTime      @updatedAt
