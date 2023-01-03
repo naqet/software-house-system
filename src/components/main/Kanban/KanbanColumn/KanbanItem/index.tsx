@@ -1,9 +1,9 @@
-import type { Epic, Story, Task } from "@prisma/client";
-import AttachmentsIcon from "../../AttachmentsIcon";
-import TimeTag from "../../TimeTag";
+import type { Task } from "@prisma/client";
+import AttachmentsIcon from "../../../../shared/AttachmentsIcon";
+import TimeTag from "../../../../shared/TimeTag";
 
 type Props = {
-  data: Task | Epic | Story;
+  data: Task;
 };
 
 const KanbanItem: React.FC<Props> = ({ data }) => {
