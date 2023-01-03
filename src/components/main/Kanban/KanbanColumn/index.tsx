@@ -4,7 +4,7 @@ import KanbanItem from "./KanbanItem";
 
 type Props = {
   name: string;
-  data?: Task[];
+  data: Task[];
 };
 
 const KanbanColumn: React.FC<Props> = ({ name, data }) => {
